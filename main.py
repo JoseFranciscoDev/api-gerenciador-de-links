@@ -5,3 +5,7 @@ from api.router import router
 app = FastAPI()
 
 app.include_router(router)
+
+@app.get('/status/')
+def get_status():
+    return {'msg': 'tudo funcionando'}
