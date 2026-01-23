@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 from api.database import get_db
-from api.schemas import LinkCreateSchema, LinkResponse
-from api.url_builders import build_tracked_url
-from urllib.parse import urlparse
-router = APIRouter(prefix='/links', tags=['links'])
+from api.v1.schemas import LinkCreateSchema, LinkResponse
+from api.v1.url_builders import build_tracked_url
+
+router = APIRouter(prefix='/v1', tags=['links - v1'])
 
 @router.post('/trankear/', response_model=LinkResponse)
 def to_trank_link(data: LinkCreateSchema):
@@ -18,4 +18,8 @@ def to_trank_link(data: LinkCreateSchema):
     params = {k: v for k, v in params.items() if v is not None}
 
     link_tranked = build_tracked_url(url_original, params)
-    return {"url_original": url_original, "url_final": link_tranked}    
+    return {"url_original": url_original, "url_final": link_tranked}
+
+@router.post("/sort/")
+def sortear_link():
+    pass
