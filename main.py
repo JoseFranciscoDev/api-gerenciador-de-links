@@ -1,4 +1,4 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI
 
 from api.v1.router import router as v1_router
 from api.database import Base, engine
