@@ -1,11 +1,10 @@
 from fastapi import FastAPI 
 
-from api.router import router
+from api.v1.router import router as v1_router
+from api.database import Base, engine
+from api.models import Link
 
-app = FastAPI()
+app = FastAPI(version="1.0.0", title="Gerenciador de Links API")
 
-app.include_router(router)
 
-@app.get('/status/')
-def get_status():
-    return {'msg': 'tudo funcionando'}
+app.include_router(v1_router)
