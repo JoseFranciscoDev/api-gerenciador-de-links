@@ -10,9 +10,9 @@ class Link(Base):
     title: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
     url_final: Mapped[str] = mapped_column(String, nullable=False)
     url_original: Mapped[str] = mapped_column(String)
-    campaign: Mapped[str] = mapped_column(String(30))
-    utm_source: Mapped[str] = mapped_column(String(30))
-    utm_medium: Mapped[str] = mapped_column(String(30))
+    # campaign: Mapped[str] = mapped_column(String(30))
+    # utm_source: Mapped[str] = mapped_column(String(30))
+    # utm_medium: Mapped[str] = mapped_column(String(30))
     create_at: Mapped[datetime] = mapped_column(DateTime, default=func.now()) # CURRENT TIMESTAMP
     deleted:Mapped[bool] = mapped_column(Boolean, default=False)
 
