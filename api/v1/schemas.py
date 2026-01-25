@@ -9,6 +9,13 @@ class LinkToTrankSchema(BaseModel):
     utm_source: Optional[str] = None
     utm_medium: Optional[str] = None
 
+    @field_validator("url_original")
+    @classmethod
+    def validator_url_original(cls, value: str):
+        if not value.strip():
+            raise ValueError("url_original cannot be void")
+        return value
+
 
 class LinkResponse(BaseModel):
     url_original: str
